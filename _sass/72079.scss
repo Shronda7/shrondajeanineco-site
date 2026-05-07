@@ -1,0 +1,75 @@
+// ============================================
+// 72079 CONCEALED SIGNATURE LAYER
+// Born of grace and seeking truth. 
+// Built to flow, connect, and complete.
+// ============================================
+// RULE: 72079 lives in the math, never the markup.
+// Never use as: visible number, pixel value, displayed property
+// Always use as: decimal opacity, timing, micro-spacing, ratios
+
+// --- Opacity Values (72079 as decimal) ---
+$sig-opacity-micro:    0.0072079;   // nearly invisible
+$sig-opacity-subtle:   0.072079;    // subtle presence
+$sig-opacity-soft:     0.2079;      // soft layer
+$sig-opacity-present:  0.72079;     // clear but not dominant
+
+// --- Timing & Animation ---
+$sig-duration-fast:    0.72079s;
+$sig-duration-standard: 1.72079s;
+$sig-duration-slow:    2.72079s;
+$sig-delay-micro:      0.072079s;
+
+// --- Spacing Micro-Values ---
+$sig-gap-tight:        7.2079px;
+$sig-gap-soft:         72.079px;
+$sig-radius-inner:     7.2079px;
+$sig-letter-spacing:   0.072079em;
+$sig-line-height:      1.72079;
+$sig-scale-hover:      1.0072079;
+
+// --- Z-Index Stacking (invisible to users) ---
+$sig-z-glass:          72079;
+$sig-z-modal:          720790;
+
+// --- Shadow Blur Values ---
+$sig-shadow-soft:      7.2079px;
+$sig-shadow-deep:      72.079px;
+
+// --- Color Alpha Channels ---
+@function sig-rgba($color, $opacity-type) {
+  @if $opacity-type == "micro" {
+    @return rgba($color, $sig-opacity-micro);
+  }
+  @if $opacity-type == "subtle" {
+    @return rgba($color, $sig-opacity-subtle);
+  }
+  @if $opacity-type == "soft" {
+    @return rgba($color, $sig-opacity-soft);
+  }
+  @if $opacity-type == "present" {
+    @return rgba($color, $sig-opacity-present);
+  }
+  @return rgba($color, $sig-opacity-subtle);
+}
+
+// ============================================
+// APPLICATION: Apply 72079 to design tokens
+// ============================================
+
+// Glassmorphism border glow (subtle)
+$glass-border-alpha: $sig-opacity-subtle;
+
+// Transition for glass cards
+$glass-transition: all $sig-duration-fast cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+// Card hover lift
+$card-hover-transform: translateY(-7.2079px);
+
+// Section padding micro-adjustment
+$section-padding-micro: $sig-gap-tight;
+
+// Text letter-spacing for eyebrows/labels
+$eyebrow-tracking: $sig-letter-spacing;
+
+// Body text line-height
+$body-line-height: $sig-line-height;

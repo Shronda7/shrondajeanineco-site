@@ -1,0 +1,73 @@
+# Site settings
+title: "Shronda Jeanine & Company"
+email: shrondajeanine@shrondajeanineco.com
+description: >-
+  Restoring Wholeness. Building Abundance. 
+  Phoenix, Arizona. Support, community, and resources 
+  for your healing journey.
+
+baseurl: "" # leave empty for custom domain
+url: "https://shrondajeanineco.com" # your custom domain
+
+# GitHub Pages settings
+repository: Shronda7/shrondawebsite
+
+# Author
+author:
+  name: Shronda Jeanine
+  email: shrondajeanine@shrondajeanineco.com
+  phone: "(602) 902-2677"
+  location: "Phoenix, Arizona"
+
+# Social & monetization
+social:
+  ko-fi: https://ko-fi.com/shrondajeanine
+  buy-me-a-coffee: https://www.buymeacoffee.com/shrondajeanine
+  pinterest: # add when ready
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: /blog/posts/:title/
+
+# Plugins (GitHub Pages supported)
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /blog/posts/:title/
+
+# Pagination (if using jekyll-paginate)
+paginate: 6
+paginate_path: "/blog/page:num/"
+
+# Exclude from processing
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
+  - README.md
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Shronda Jeanine"
+      pinterest: true
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"

@@ -1,0 +1,52 @@
+// ============================================
+// BRAND PALETTE — Shronda Jeanine & Company
+// ============================================
+
+// Core colors
+$clay:    #C4856A;
+$deep:    #2B1F1A;
+$warm:    #F5EDE3;
+$ivory:   #FAF7F2;
+$sage:    #7D9E8C;
+$gold:    #C8A96E;
+$text:    #3D2E28;
+$muted:   #8A7068;
+
+// Glassmorphism system
+// Requires: backdrop-filter support, layered backgrounds
+
+// Light glass (for dark sections)
+$glass-light-bg:        rgba(250, 247, 242, 0.08);
+$glass-light-border:    rgba(200, 169, 110, 0.15);
+$glass-light-highlight: rgba(255, 255, 255, 0.1);
+
+// Dark glass (for light sections)
+$glass-dark-bg:         rgba(43, 31, 26, 0.25);
+$glass-dark-border:     rgba(196, 133, 106, 0.12);
+$glass-dark-highlight:  rgba(255, 255, 255, 0.05);
+
+// Deep glass (for hero/overlays)
+$glass-deep-bg:         rgba(43, 31, 26, 0.45);
+$glass-deep-border:     rgba(200, 169, 110, 0.08);
+
+// Typography
+$font-serif:  'Cormorant Garamond', Georgia, serif;
+$font-sans:   'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+// Spacing scale
+$space-xs:  8px;
+$space-sm:  16px;
+$space-md:  32px;
+$space-lg:  64px;
+$space-xl:  96px;
+
+// Breakpoints
+$bp-mobile:  640px;
+$bp-tablet:  860px;
+$bp-desktop: 1080px;
+
+// Border radius
+$radius-sm:  12px;
+$radius-md:  16px;
+$radius-lg:  20px;
+$radius-xl:  100px;

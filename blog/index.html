@@ -1,0 +1,65 @@
+---
+layout: default
+title: "Blog"
+description: "Thoughts and resources to support your healing journey. Wholeness, abundance, and community."
+---
+
+<section class="ivory-section" style="padding-top: 120px;">
+  <div class="mx-auto" style="max-width: 1080px;">
+    <span class="eyebrow">From the Blog</span>
+    <h1 class="section-title">Read, reflect,<br><em>and grow.</em></h1>
+    <p class="section-sub">Thoughts and resources to support your journey toward wholeness and abundance.</p>
+
+    <!-- Category Filter -->
+    <div style="display: flex; gap: 10px; margin-bottom: 40px; flex-wrap: wrap;">
+      <a href="{{ '/blog/' | relative_url }}" class="btn-enroll {% if page.url == '/blog/' %}solid{% else %}ghost{% endif %}" style="color: var(--text); border-color: rgba(61,46,40,0.2);">All</a>
+      <a href="{{ '/blog/category/wholeness/' | relative_url }}" class="btn-enroll ghost" style="color: var(--text); border-color: rgba(61,46,40,0.2);">Wholeness</a>
+      <a href="{{ '/blog/category/abundance/' | relative_url }}" class="btn-enroll ghost" style="color: var(--text); border-color: rgba(61,46,40,0.2);">Abundance</a>
+      <a href="{{ '/blog/category/community/' | relative_url }}" class="btn-enroll ghost" style="color: var(--text); border-color: rgba(61,46,40,0.2);">Community</a>
+    </div>
+
+    <!-- Blog Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px;">
+      {% for post in site.posts %}
+      <article class="glass-blog">
+        {% if post.image %}
+        <div class="blog-thumb" style="height: 220px;">
+          <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+          <div class="blog-overlay"></div>
+          <span class="blog-tag">{{ post.category | default: 'Blog' }}</span>
+        </div>
+        {% endif %}
+        <div class="blog-body">
+          <div class="blog-meta">{{ post.date | date: '%B %d, %Y' }}</div>
+          <h3><a href="{{ post.url | relative_url }}" style="color: var(--deep); text-decoration: none;">{{ post.title }}</a></h3>
+          <p>{{ post.description | default: post.excerpt | strip_html | truncate: 140 }}</p>
+          <a href="{{ post.url | relative_url }}" class="blog-read">Read article →</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <!-- Pagination (if using jekyll-paginate) -->
+    {% if paginator.total_pages > 1 %}
+    <div style="display: flex; justify-content: center; gap: 10px; margin-top: 60px;">
+      {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path | relative_url }}" class="btn-enroll ghost">← Newer</a>
+      {% endif %}
+
+      <span style="padding: 10px 20px; font-size: 0.85rem; color: var(--muted);">
+        Page {{ paginator.page }} of {{ paginator.total_pages }}
+      </span>
+
+      {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | relative_url }}" class="btn-enroll ghost">Older →</a>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {% if site.posts.size == 0 %}
+    <div style="text-align: center; padding: 80px 20px;">
+      <p style="font-size: 1.1rem; color: var(--muted);">Articles coming soon. Check back for fresh perspectives on wholeness, abundance, and community.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>

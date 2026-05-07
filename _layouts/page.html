@@ -1,0 +1,20 @@
+---
+layout: default
+---
+
+<section class="ivory-section" style="padding-top: 120px;">
+  <div class="mx-auto" style="max-width: 720px;">
+    {% if page.title %}
+    <span class="eyebrow">{{ page.eyebrow | default: page.category | default: 'Page' }}</span>
+    <h1 class="section-title">{{ page.title }}</h1>
+    {% endif %}
+
+    {% if page.description %}
+    <p class="section-sub">{{ page.description }}</p>
+    {% endif %}
+
+    <div class="page-content" style="font-size: 0.95rem; line-height: 1.75; color: var(--text);">
+      {{ content }}
+    </div>
+  </div>
+</section>

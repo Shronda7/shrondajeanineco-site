@@ -1,0 +1,266 @@
+// ============================================
+// GLASSMORPHISM SYSTEM
+// Requires backdrop-filter support
+// Fallbacks included for non-supporting browsers
+// ============================================
+
+@import "variables";
+@import "72079";
+
+// --- Base Glass Mixin ---
+@mixin glass($variant: "light") {
+  @if $variant == "light" {
+    background: $glass-light-bg;
+    border: 1px solid $glass-light-border;
+    box-shadow: 
+      0 8px 32px rgba($deep, $sig-opacity-micro * 10),
+      inset 0 1px 0 $glass-light-highlight;
+  }
+  @if $variant == "dark" {
+    background: $glass-dark-bg;
+    border: 1px solid $glass-dark-border;
+    box-shadow: 
+      0 8px 32px rgba($deep, $sig-opacity-micro * 15),
+      inset 0 1px 0 $glass-dark-highlight;
+  }
+  @if $variant == "deep" {
+    background: $glass-deep-bg;
+    border: 1px solid $glass-deep-border;
+    box-shadow: 
+      0 16px 48px rgba($deep, $sig-opacity-micro * 20),
+      inset 0 1px 0 rgba(255,255,255,0.03);
+  }
+
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: $radius-md;
+  transition: $glass-transition;
+  position: relative;
+  overflow: hidden;
+
+  // Specular highlight line (top edge)
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255,255,255,0.15) 50%,
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+}
+
+// --- Glass Utility Classes ---
+.glass-light {
+  @include glass("light");
+}
+
+.glass-dark {
+  @include glass("dark");
+}
+
+.glass-deep {
+  @include glass("deep");
+}
+
+// --- Hover Enhancement ---
+.glass-hover {
+  &:hover {
+    background: rgba(250, 247, 242, 0.12);
+    transform: $card-hover-transform;
+    box-shadow: 
+      0 12px 40px rgba($deep, $sig-opacity-micro * 15),
+      inset 0 1px 0 rgba(255,255,255,0.15);
+  }
+}
+
+// --- Glass Card Component ---
+.glass-card {
+  @include glass("light");
+  padding: $space-md;
+
+  // Bottom accent line (clay) — concealed 72079 in timing
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: $clay;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform $sig-duration-fast;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+
+  &:hover {
+    transform: $card-hover-transform;
+  }
+}
+
+// --- Glass Navigation ---
+.glass-nav {
+  @include glass("light");
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 64px;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0;
+  border-bottom: 1px solid sig-rgba($clay, "micro");
+
+  // Stronger blur for nav
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+}
+
+// --- Glass Pricing Card ---
+.glass-pricing {
+  @include glass("dark");
+  padding: 26px;
+  border-radius: $radius-md;
+
+  &.featured {
+    background: sig-rgba($clay, "soft");
+    border-color: sig-rgba($clay, "subtle");
+
+    &::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: -11px;
+      left: 24px;
+      font-size: 0.67rem;
+      font-weight: 500;
+      letter-spacing: $sig-letter-spacing * 1.5;
+      text-transform: uppercase;
+      background: $gold;
+      color: $deep;
+      padding: 3px 11px;
+      border-radius: $radius-xl;
+    }
+  }
+}
+
+// --- Glass Blog Card ---
+.glass-blog {
+  @include glass("light");
+  border-radius: $radius-lg;
+  overflow: hidden;
+  background: rgba(255,255,255,0.7);
+
+  .blog-thumb {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform $sig-duration-fast;
+    }
+  }
+
+  &:hover .blog-thumb img {
+    transform: scale(1.04);
+  }
+
+  &:hover {
+    transform: $card-hover-transform;
+    box-shadow: 0 16px 40px rgba($deep, $sig-opacity-micro * 12);
+  }
+}
+
+// --- Glass Testimonial ---
+.glass-testimonial {
+  @include glass("light");
+  border-radius: $radius-lg;
+  padding: 34px 30px;
+  background: rgba(255,255,255,0.6);
+
+  &.featured {
+    background: sig-rgba($clay, "soft");
+    border-color: sig-rgba($clay, "subtle");
+    margin-top: 28px;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 40px rgba($deep, $sig-opacity-micro * 10);
+  }
+}
+
+// --- Glass Crisis Bar ---
+.glass-crisis {
+  @include glass("deep");
+  background: sig-rgba($clay, "present");
+  border-color: sig-rgba($clay, "subtle");
+  margin-top: 52px;
+  padding: 26px 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+// --- Fallback for non-supporting browsers ---
+@supports not (backdrop-filter: blur(20px)) {
+  .glass-light,
+  .glass-card,
+  .glass-blog,
+  .glass-testimonial {
+    background: rgba($ivory, 0.95);
+  }
+
+  .glass-dark,
+  .glass-pricing {
+    background: rgba($deep, 0.9);
+  }
+
+  .glass-deep,
+  .glass-crisis {
+    background: rgba($deep, 0.95);
+  }
+
+  .glass-nav {
+    background: rgba($ivory, 0.95);
+  }
+}
+
+// --- Mobile Optimization ---
+@media (max-width: $bp-mobile) {
+  .glass-nav {
+    padding: 0 20px;
+    height: 56px;
+  }
+
+  .glass-card,
+  .glass-testimonial,
+  .glass-pricing {
+    padding: 24px 20px;
+  }
+
+  // Reduce blur intensity on mobile for performance
+  .glass-light,
+  .glass-dark,
+  .glass-deep {
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+  }
+}

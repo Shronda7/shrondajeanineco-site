@@ -1,0 +1,30 @@
+<!-- Footer -->
+<footer>
+  <div class="footer-brand">Shronda Jeanine & Company</div>
+
+  <div class="footer-contact">
+    <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+    &nbsp;·&nbsp; {{ site.author.phone }} &nbsp;·&nbsp; {{ site.author.location }}
+  </div>
+
+  <div class="footer-copy">
+    © {{ 'now' | date: '%Y' }} {{ site.title }}. Restoring Wholeness. Building Abundance.
+  </div>
+</footer>
+
+<!-- BuyMeACoffee Floating Button -->
+{% if site.social.buy-me-a-coffee %}
+<a href="{{ site.social.buy-me-a-coffee }}" target="_blank" rel="noopener" class="bmac-float" aria-label="Support on Buy Me A Coffee">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12.5 2.5C12.5 2.5 12.5 2.5 12.5 2.5C12.5 2.5 12.5 2.5 12.5 2.5C12.5 2.5 12.5 2.5 12.5 2.5C12.5 2.5 12.5 2.5 12.5 2.5Z"/>
+  </svg>
+  Support the Work
+</a>
+{% endif %}
+
+<!-- Ko-fi Floating Button (fallback) -->
+{% if site.social.ko-fi and site.social.buy-me-a-coffee == null %}
+<a href="{{ site.social.ko-fi }}" target="_blank" rel="noopener" class="kofi-float" aria-label="Support on Ko-fi">
+  ☕ Support the Work
+</a>
+{% endif %}

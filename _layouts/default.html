@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include head.html %}
+<body>
+  {% include nav.html %}
+
+  <main>
+    {{ content }}
+  </main>
+
+  {% include footer.html %}
+
+  <!-- Reading Progress Bar (blog posts only) -->
+  {% if page.layout == 'post' %}
+  <div class="reading-progress" id="reading-progress"></div>
+  <script>
+    (function() {
+      const progressBar = document.getElementById('reading-progress');
+      if (!progressBar) return;
+
+      window.addEventListener('scroll', function() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressBar.style.width = scrollPercent + '%';
+      });
+    })();
+  </script>
+  {% endif %}
+</body>
+</html>
