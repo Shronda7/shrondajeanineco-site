@@ -9,7 +9,7 @@ description: "Not sure where to start? Reach out directly and we'll point you in
 
 **Email:** [{{ site.email }}](mailto:{{ site.email }})
 
-**Phone:** [{{ site.author.phone }}](tel:6029022677)
+**Phone:** [{{ site.author.phone }}](tel:6027590158)
 
 **Location:** {{ site.author.location }}
 
@@ -17,7 +17,7 @@ description: "Not sure where to start? Reach out directly and we'll point you in
 
 If you need immediate support, please reach out right away.
 
-- **Direct:** [{{ site.author.phone }}](tel:6029022677)
+- **Direct:** [{{ site.author.phone }}](tel:6027590158)
 - **National Crisis Line:** [988](tel:988)
 - **Crisis Text Line:** Text HOME to 741741
 
